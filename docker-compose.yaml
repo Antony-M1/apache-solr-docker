@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  solr:
+    image: solr:9.2.0
+    container_name: solr
+    restart: always
+    ports:
+      - "8983:8983"
+    volumes:
+      - solr_data:/opt/solr/server/solr/mycores
+    environment:
+      SOLR_CORE_NAME: mycore
+      SOLR_CORE_CONFIG: data_driven_schema_configs
+      SOLR_HEAP: "512m"
+
+volumes:
+  solr_data:
